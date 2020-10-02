@@ -1,13 +1,11 @@
 #include <iostream>
-#define LENGTH 5          //Assumed value, it will be permitted
+#define LENGTH 5          //Assumed value, it will be allowed
 #define SENTINEL 999999   //Sentinel value for Merge Sort
 
 typedef struct LabeledHeap{
     int label;
     int* heap;
 }LabeledHeap;
-
-using namespace std;
 
 void MaxHeapify(int* A, int* i, int* n){
     int l = 2 * (*i) - 1;
@@ -98,27 +96,4 @@ void Toby(int* n, int** holes){
     LabeledHeap A[*n];
     CountConditionNodes(&n, holes, A);
     MergeSort(A, 0, *n - 1);
-}
-
-int main()
-{
-    int values[25] = {45879,254,78966,123,987,        //2
-                      9,78966,12369,933,12347,        //3
-                      12000,43,78966,333699,633,      //2
-                      48889,2599,7896,123161564,333,  //1
-                      45879,254,78966,12378,3};       //3
-
-    int n = 5;
-    
-    int** m = new int* [n];
-    for(int i=0; i < n; i++)
-        m[i] = new int [LENGTH];
-    
-    for(int i=0; i < n; i++)
-        for(int j=0; j < LENGTH; j++)
-            m[i][j] = values[LENGTH*i + j];
-    
-    Toby(&n, m);
-
-    return 0;
 }
