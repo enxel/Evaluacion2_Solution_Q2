@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #define LENGTH 5          //Assumed value, it will be allowed
-#define MAX_ITER 100
 
 using namespace std;
 
@@ -37,18 +36,6 @@ void DListArrays(int** n, string** m, LabeledDList* A){
         string* R = m[k];
         A[k].list = DListify(R, &l);
     }
-}
-
-int Decimals(float f){
-    int d = 0;
-    int maxiter = MAX_ITER;
-    for(int i=0; i < maxiter; i++){
-        int f_i = f;
-        f = f - f_i;
-        if(f == 0) break;
-        else d++;
-    }
-    return d;
 }
 
 int CountNodes(Node* D, int* l){
