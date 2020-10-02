@@ -48,7 +48,7 @@ int Digits(int n){
 int CountNodes(int* H, int* l){
     int cont = 0;
     for(int k=0; k < *l; k++)
-        if(Digits(H[k]) == 5) && 2*k < *l && H[2*k-1] == 2*H[2*k])
+        if(Digits(H[k]) == 5 && 2*k < *l && H[2*k-1] == 2*H[2*k])
             cont++;
     return cont;
 }
