@@ -38,19 +38,21 @@ void DListArrays(int** n, string** m, LabeledDList* A){
     }
 }
 
-int CountNodes(Node* D, int* l){
+int CountNodes(Node* D){
     int cont = 0;
-    for(int k=0; k < *l; k++)
-        if(D->team_name.length() >= 7 && D->prev != NULL && D->prev->team_name.length() % 2  == 0 &&
-                    D->next != NULL && D->next->team_name.length() % 2  == 0)
+    Node* copy = D;
+    while(copy != NULL){
+        if(copy->team_name.length() >= 7 && copy->prev != NULL && copy->prev->team_name.length() % 2  == 0 &&
+                    copy->next != NULL && copy->next->team_name.length() % 2  == 0)
             cont++;
+        copy = copy->next;
+    }
     return cont;
 }
 
 void CountConditionNodes(int** n, LabeledDList* A){
     for(int k=0; k < **n; k++){
-        int l = LENGTH;
-        int label = CountNodes(A[k].list, &l);
+        int label = CountNodes(A[k].list);
         A[k].label = label;
     }
 }

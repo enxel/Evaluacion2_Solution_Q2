@@ -46,18 +46,20 @@ int Decimals(float f){
     return d;
 }
 
-int CountNodes(Node* S, int* l){
+int CountNodes(Node* S){
     int cont = 0;
-    for(int k=0; k < *l; k++)
-        if(Decimals(S->sales) == 3 && S->next != NULL && Decimals(S->next->sales) == 0) //It will be allowed
+    Node* copy = S;
+    while(copy != NULL){
+        if(Decimals(copy->sales) == 3 && copy->next != NULL && Decimals(copy->next->sales) == 0) //It will be allowed
             cont++;
+        copy = copy->next;
+    }
     return cont;
 }
 
 void CountConditionNodes(int** n, LabeledStack* A){
     for(int k=0; k < **n; k++){
-        int l = LENGTH;
-        int label = CountNodes(A[k].stack, &l);
+        int label = CountNodes(A[k].stack);
         A[k].label = label;
     }
 }

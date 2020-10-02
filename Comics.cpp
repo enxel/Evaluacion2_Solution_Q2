@@ -42,18 +42,20 @@ bool Prime(int n){
     return true;
 }
 
-int CountNodes(Node* Q, int* l){
+int CountNodes(Node* Q){
     int cont = 0;
-    for(int k=0; k < *l; k++)
-        if(Prime(Q->issue) && Q->next != NULL && Q->next->next !=NULL && Prime(Q->next->next->issue)) //It will be allowed
+    Node* copy = Q;
+    while(copy != NULL){
+        if(Prime(copy->issue) && copy->next != NULL && copy->next->next !=NULL && Prime(copy->next->next->issue)) //It will be allowed
             cont++;
+        copy = copy->next;
+    }
     return cont;
 }
 
 void CountConditionNodes(int** n, LabeledQueue* A){
     for(int k=0; k < **n; k++){
-        int l = LENGTH;
-        int label = CountNodes(A[k].queue, &l);
+        int label = CountNodes(A[k].queue);
         A[k].label = label;
     }
 }
