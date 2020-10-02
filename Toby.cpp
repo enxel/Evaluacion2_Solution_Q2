@@ -1,4 +1,3 @@
-#include <iostream>
 #define LENGTH 5          //Assumed value, it will be allowed
 #define SENTINEL 999999   //Sentinel value for Merge Sort
 

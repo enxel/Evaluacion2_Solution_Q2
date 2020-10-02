@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 #define LENGTH 5          //Assumed value, it will be allowed
 
